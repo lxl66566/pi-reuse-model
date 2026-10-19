@@ -54,7 +54,7 @@
     "simple-git-hooks": "^2.14.0",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.71.2",
-    "vitest": "^5.0.4"
+    "vitest": "^5.0.5"
   },
   "peerDependencies": {
     "@earendil-works/pi-coding-agent": ">=1.0.0"

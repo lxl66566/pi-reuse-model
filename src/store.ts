@@ -93,17 +93,17 @@ export class ModelStore {
   }
 }
 
+/** Windows paths after slash normalization: drive-letter or UNC. */
+const WINDOWS_PATH = /^(?:[a-z]:\/|\/\/)/i;
+
 /**
- * Canonical key for a workspace directory. Windows paths are lowercased and
- * use forward slashes so the same workspace reached via different path
- * spellings shares one record.
+ * Canonical key for a workspace directory, independent of the host platform.
+ * Windows paths (drive letter or UNC) are lowercased and use forward slashes
+ * because those filesystems are case-insensitive; POSIX path case is kept.
  */
-export function workspaceKey(
-  cwd: string,
-  platform: NodeJS.Platform = process.platform,
-): string {
+export function workspaceKey(cwd: string): string {
   const normalized = cwd.replaceAll('\\', '/');
-  return platform === 'win32' ? normalized.toLowerCase() : normalized;
+  return WINDOWS_PATH.test(normalized) ? normalized.toLowerCase() : normalized;
 }
 
 /**

@@ -21,14 +21,14 @@ afterEach(() => {
 });
 
 describe('workspaceKey', () => {
-  it('normalizes backslashes to forward slashes', () => {
-    expect(workspaceKey('C:\\a\\b', 'win32')).toBe('c:/a/b');
-    expect(workspaceKey('C:\\a\\b', 'linux')).toBe('C:/a/b');
+  it('canonicalizes windows paths across spellings', () => {
+    expect(workspaceKey('C:\\A\\B')).toBe('c:/a/b');
+    expect(workspaceKey('c:/a/b')).toBe('c:/a/b');
+    expect(workspaceKey('\\\\Server\\Share')).toBe('//server/share');
   });
 
-  it('lowercases only on win32', () => {
-    expect(workspaceKey('/Home/User', 'win32')).toBe('/home/user');
-    expect(workspaceKey('/Home/User', 'linux')).toBe('/Home/User');
+  it('preserves the case of posix paths', () => {
+    expect(workspaceKey('/Home/User')).toBe('/Home/User');
   });
 });
 
@@ -43,7 +43,7 @@ describe('ModelStore', () => {
     });
   });
 
-  it('finds the same workspace across path spellings on win32', () => {
+  it('finds the same workspace across path spellings', () => {
     const store = new ModelStore(tempFile('store.json'));
     store.saveModel('C:\\A\\B', 'prov', 'model-1');
 

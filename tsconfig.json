@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "NodeNext",
+    "moduleResolution": "nodenext",
+    "allowImportingTsExtensions": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "types": ["node"],
+    "noEmit": true,
+    "skipLibCheck": true, // third-party .d.ts (pi-ai) uses JSON imports without attributes
+    "alwaysStrict": true, // enforce strict mode in emitted code
+    "declaration": false,
+    "exactOptionalPropertyTypes": false, // distinguish undefined and missing optional properties
+    "forceConsistentCasingInFileNames": true, // enforce filename casing consistency
+    "isolatedDeclarations": false,
+    "isolatedModules": true, // each file must be an independent module
+    "noFallthroughCasesInSwitch": true, // disallow case fallthrough
+    "noImplicitAny": true, // disallow implicit any
+    "noImplicitOverride": true, // require override modifier
+    "noImplicitReturns": true, // require explicit returns on all paths
+    "noImplicitThis": true, // disallow implicit any this
+    "noPropertyAccessFromIndexSignature": false,
+    "strict": true,
+    "strictBindCallApply": true,
+    "strictFunctionTypes": true,
+    "strictNullChecks": true,
+    "noUncheckedIndexedAccess": true, // index access returns T | undefined
+    "noUncheckedSideEffectImports": true, // side-effect imports are also resolved and checked
+    "useUnknownInCatchVariables": true,
+    "verbatimModuleSyntax": true
+  },
+  "include": ["src", "eslint.config.js"]
+}

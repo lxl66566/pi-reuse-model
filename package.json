@@ -1,0 +1,78 @@
+{
+  "name": "pi-reuse-model",
+  "version": "0.1.0",
+  "description": "pi coding agent extension: start every fresh session on the model and thinking level last used in this workspace",
+  "keywords": [
+    "model-selection",
+    "pi",
+    "pi-coding-agent",
+    "pi-extension",
+    "pi-package",
+    "thinking-level"
+  ],
+  "homepage": "https://github.com/lxl66566/pi-reuse-model#readme",
+  "bugs": {
+    "url": "https://github.com/lxl66566/pi-reuse-model/issues"
+  },
+  "license": "MIT",
+  "author": "lxl66566",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lxl66566/pi-reuse-model.git"
+  },
+  "files": [
+    "src",
+    "!src/**/*.test.ts",
+    "README.md",
+    "LICENSE"
+  ],
+  "type": "module",
+  "scripts": {
+    "fmt": "oxfmt",
+    "lint": "oxlint . && eslint .",
+    "fix": "eslint --fix .",
+    "check": "tsc --noEmit",
+    "verify": "pnpm fmt:check && pnpm lint && pnpm check && pnpm test",
+    "fmt:check": "oxfmt --check",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "prepare": "simple-git-hooks"
+  },
+  "devDependencies": {
+    "@earendil-works/pi-coding-agent": "^1.2.0",
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^26.6.5",
+    "@vitest/eslint-plugin": "^1.6.27",
+    "eslint": "^10.12.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-import-x": "^4.17.1",
+    "eslint-plugin-perfectionist": "^5.12.1",
+    "eslint-plugin-regexp": "^3.3.1",
+    "lint-staged": "^17.6.0",
+    "oxfmt": "^0.73.0",
+    "oxlint": "^1.88.0",
+    "simple-git-hooks": "^2.14.0",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.71.2",
+    "vitest": "^5.0.4"
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": ">=1.0.0"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,mjs,cjs,json,jsonc,md,yml,yaml}": [
+      "oxlint --fix --no-error-on-unmatched-pattern",
+      "eslint --fix",
+      "oxfmt --no-error-on-unmatched-pattern"
+    ]
+  },
+  "packageManager": "pnpm@12.14.0+sha512.c18ba6d87993d3d164cb5e8948f32b2c06ee854487e06cd8d86781342fb3e5bb4634367034711e86802baa9c37bea906ce1929ad08d70884c97d801df13389a6",
+  "pi": {
+    "extensions": [
+      "./src/index.ts"
+    ]
+  }
+}
